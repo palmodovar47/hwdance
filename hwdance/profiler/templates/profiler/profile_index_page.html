@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-profileindexpage{% endblock %}
+
+{% block content %}
+    <h1>{{ page.title }}</h1>
+
+    <div class="intro">{{ page.intro|richtext }}</div>
+
+    {% for profile in page.get_children %}
+        {% with profile=profile.specific %}
+            <h2><a href="{% pageurl profile %}">{{ profile.title }}</a></h2>
+            <p>{{ profile.intro }}</p>
+            {{ profile.body|richtext }}
+        {% endwith %}
+    {% endfor %}
+
+{% endblock %}

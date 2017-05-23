@@ -1,0 +1,92 @@
+@font-face{
+  font-family: Adine-Kirnberg;
+  src: local("Adine Kirnberg.ttf");
+  font-weight: normal;
+}
+@font-face{
+  font-family: Adine-Kirnberg-Alt;
+  src: local("AdineKirnberg-Alternate.ttf");
+  font-weight: normal;
+}
+.ballet1{
+  font-family: Adine-Kirnberg-Alt;
+  color:black;
+}
+#nav1{
+  -webkit-box-shadow: 0px 3px 10px -2px rgba(0,0,0,0.75);
+     -moz-box-shadow: 0px 3px 10px -2px rgba(0,0,0,0.75);
+          box-shadow: 0px 3px 10px -2px rgba(0,0,0,0.75);
+  background-color: #85AD33;
+}
+#container1{
+  -webkit-box-shadow: 8px 0px 5px -5px #999, -8px 0px 5px -5px #999, 0px 8px 5px -5px #999;
+     -moz-box-shadow: 8px 0px 5px -5px #999, -8px 0px 5px -5px #999, 0px 8px 5px -5px #999;
+          box-shadow: 8px 0px 5px -5px #999, -8px 0px 5px -5px #999, 0px 8px 5px -5px #999;
+  padding-top: 6.25em;
+background-color: white;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover{
+    background-color: #A5CB58;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:active{
+    background-color: #A5CB58;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:visited{
+    background-color: #A5CB58;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:link{
+    background-color: #A5CB58;
+}
+.nav-pills > li > a{
+  color:#436401;
+}
+ .navbar .nav > li > a {
+   color: white;
+ }
+
+.wrapit{
+  word-wrap: normal;
+}
+
+#homepic1{
+  border-style: solid;
+  border=color: #85AD33;
+  border-radius: 10px;
+}
+#bottomPad{
+  margin-bottom: 2em;
+}
+.bio {
+  /*padding-right: 6em;
+  padding-left: 6em;*/
+}
+.nav-pills {
+    display: flex;
+    justify-content: center;
+}
+.centerit{
+  display: flex;
+  justify-content: center;
+}
+
+#container1 a {
+  color:#436401;
+}
+
+#override .colorit {
+  color: white;
+}
+
+#override .active a {
+  background-color: #7f9d43;
+  /*background-color: #87b42d;*/
+}
+
+#container1 {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#searchbox {
+  padding-right: 30px;
+}

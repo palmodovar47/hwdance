@@ -1,0 +1,78 @@
+{% load demo_tags wagtailcore_tags %}
+{% get_site_root as site_root %}
+
+{# Implementation of bootstrap theme dropdown menu - shows top level links and their children #}
+<div role="navigation" class="navbar navbar-default navbar-fixed-top container" id="nav1">
+    <div class="container">
+        <div class="navbar-header">
+            <button  data-target="#navbar" data-toggle="collapse" class="navbar-toggle" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            {# Link to home page #}
+            <a href="{% pageurl site_root %}" class="navbar-brand" title="{{ site_root.title }}" data-placement="bottom">
+                <i class="colorit glyphicon glyphicon-home"></i>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav">
+                {% for menuitem in menuitems %}
+                    <li class="{% if menuitem.show_dropdown %}dropdown{% endif %}{% if menuitem.active %} active{% endif %} ">
+                        {% if menuitem.show_dropdown %}
+                            <a data-toggle="dropdown" class="dropdown-toggle colorit" href="#">{{ menuitem.title }} <b class="caret"></b></a>
+                            {% top_menu_children parent=menuitem %}
+                        {% else %}
+                            <a class="colorit" href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+                        {% endif %}
+                    </li>       
+                {% endfor %}
+            </ul>
+            <form id="searchbox" class="navbar-form navbar-right" role="search" action="{% url 'search' %}" method="get">
+                <div class="input-group">
+                    <input type="text" name="query" class="form-control" placeholder="Search…" value="{{ search_query }}" />
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!--<nav class="navbar navbar-default navbar-fixed-top container" id="nav1">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+             <img style="position:relative; top:-15px" src="../static/assets/photos/raw/Logo4w50.png">
+          </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+              </ul>
+            
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li><a class="colorit" href="/">Home</a></li>
+            <li><a class="colorit" href="/events">Events</a></li>
+            <li><a class="colorit" href="/schedules">Schedules and Fees</a></li>
+            <li><a class="colorit" href="/about">Our Staff</a></li>
+            <li><a class="colorit" href="/dynamic/page=1">General Info and Contact</a></li>
+            
+            <li><a href="/login">Login</a></li>
+            
+            <li><a href="#"></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>-->

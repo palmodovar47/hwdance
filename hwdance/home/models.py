@@ -1,9 +1,22 @@
-from __future__ import absolute_import, unicode_literals
-
-from django.db import models
-
+from wagtail.wagtailcore import blocks
+from wagtail.wagtailimages.blocks import ImageChooserBlock
+from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel
+from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Page
+from wagtail.wagtailsearch import index
 
 
 class HomePage(Page):
-    pass
+    streamfieldbody = StreamField([
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('image', ImageChooserBlock()),
+    ])
+
+    search_fields = Page.search_fields + [
+        index.SearchField('streamfieldbody'),
+    ]
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('streamfieldbody'),
+    ]

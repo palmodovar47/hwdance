@@ -1,11 +1,27 @@
 {% extends "base.html" %}
 
+{% load wagtailcore_tags %}
+
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-    <h1>Welcome to your new Wagtail site!</h1>
+    
+    <div class="text-center">
+        <article class="center-block">
+        {% for block in page.streamfieldbody %}
+            {% if block.block_type == 'image' %}
+                <section class="block-{{ block.block_type }}">
+                    {% include_block block %}
+                </section>
+            {% elif block.block_type == 'heading' %}
+                <h1>{{ block.value }}</h1>
+            {% else %}
+                <section class="block-{{ block.block_type }}">
+                    {% include_block block %}
+                </section>
+            {% endif %}
+        {% endfor %}
+        </article>
+    </div>
 
-    <p>You can access the admin interface <a href="{% url 'wagtailadmin_home' %}">here</a> (make sure you have run "./manage.py createsuperuser" in the console first).</p>
-
-    <p>If you haven't already given the documentation a read, head over to <a href="http://docs.wagtail.io/">http://docs.wagtail.io</a> to start building on Wagtail</p>
 {% endblock %}
